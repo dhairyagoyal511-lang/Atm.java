@@ -1,0 +1,235 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+package bank.management.system;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+
+public class Signup3 extends JFrame implements ActionListener {
+   JRadioButton r1;
+   JRadioButton r2;
+   JRadioButton r3;
+   JRadioButton r4;
+   JCheckBox c1;
+   JCheckBox c2;
+   JCheckBox c3;
+   JCheckBox c4;
+   JCheckBox c5;
+   JCheckBox c6;
+   JButton s;
+   JButton c;
+   String formno;
+
+   Signup3(String var1) {
+      this.formno = var1;
+      ImageIcon var2 = new ImageIcon(ClassLoader.getSystemResource("icon/bank.png"));
+      Image var3 = var2.getImage().getScaledInstance(100, 100, 1);
+      ImageIcon var4 = new ImageIcon(var3);
+      JLabel var5 = new JLabel(var4);
+      var5.setBounds(150, 5, 100, 100);
+      this.add(var5);
+      JLabel var6 = new JLabel("Page 3:");
+      var6.setFont(new Font("Raleway", 1, 22));
+      var6.setBounds(280, 40, 400, 40);
+      this.add(var6);
+      JLabel var7 = new JLabel("Account Details");
+      var7.setFont(new Font("Raleway", 1, 22));
+      var7.setBounds(280, 70, 400, 40);
+      this.add(var7);
+      JLabel var8 = new JLabel("Account Type:");
+      var8.setFont(new Font("Raleway", 1, 18));
+      var8.setBounds(100, 140, 200, 30);
+      this.add(var8);
+      this.r1 = new JRadioButton("Saving Account");
+      this.r1.setFont(new Font("Raleway", 1, 16));
+      this.r1.setBackground(new Color(215, 252, 252));
+      this.r1.setBounds(100, 180, 150, 30);
+      this.add(this.r1);
+      this.r2 = new JRadioButton("Fixed Deposit Account");
+      this.r2.setFont(new Font("Raleway", 1, 16));
+      this.r2.setBackground(new Color(215, 252, 252));
+      this.r2.setBounds(350, 180, 300, 30);
+      this.add(this.r2);
+      this.r3 = new JRadioButton("Current Account");
+      this.r3.setFont(new Font("Raleway", 1, 16));
+      this.r3.setBackground(new Color(215, 252, 252));
+      this.r3.setBounds(100, 220, 250, 30);
+      this.add(this.r3);
+      this.r4 = new JRadioButton("Recurring Deposit Account");
+      this.r4.setFont(new Font("Raleway", 1, 16));
+      this.r4.setBackground(new Color(215, 252, 252));
+      this.r4.setBounds(350, 220, 250, 30);
+      this.add(this.r4);
+      ButtonGroup var9 = new ButtonGroup();
+      var9.add(this.r1);
+      var9.add(this.r2);
+      var9.add(this.r3);
+      var9.add(this.r4);
+      JLabel var10 = new JLabel("Card Number:");
+      var10.setFont(new Font("Raleway", 1, 18));
+      var10.setBounds(100, 300, 200, 30);
+      this.add(var10);
+      JLabel var11 = new JLabel("(Your 16-digit Card Number)");
+      var11.setFont(new Font("Raleway", 1, 12));
+      var11.setBounds(100, 330, 200, 20);
+      this.add(var11);
+      JLabel var12 = new JLabel("XXXX-XXXX-XXXX-4841");
+      var12.setFont(new Font("Raleway", 1, 18));
+      var12.setBounds(330, 300, 250, 30);
+      this.add(var12);
+      JLabel var13 = new JLabel("(It would appear on atm card/cheque Book and Statements)");
+      var13.setFont(new Font("Raleway", 1, 12));
+      var13.setBounds(330, 330, 500, 20);
+      this.add(var13);
+      JLabel var14 = new JLabel("PIN:");
+      var14.setFont(new Font("Raleway", 1, 18));
+      var14.setBounds(100, 370, 200, 30);
+      this.add(var14);
+      JLabel var15 = new JLabel("XXXX");
+      var15.setFont(new Font("Raleway", 1, 18));
+      var15.setBounds(330, 370, 200, 30);
+      this.add(var15);
+      JLabel var16 = new JLabel("(4-digit Password)");
+      var16.setFont(new Font("Raleway", 1, 12));
+      var16.setBounds(100, 400, 200, 20);
+      this.add(var16);
+      JLabel var17 = new JLabel("Services Required:");
+      var17.setFont(new Font("Raleway", 1, 18));
+      var17.setBounds(100, 450, 200, 30);
+      this.add(var17);
+      this.c1 = new JCheckBox("ATM CARD");
+      this.c1.setBackground(new Color(215, 252, 252));
+      this.c1.setFont(new Font("Raleway", 1, 16));
+      this.c1.setBounds(100, 500, 200, 30);
+      this.add(this.c1);
+      this.c2 = new JCheckBox("Internet Banking");
+      this.c2.setBackground(new Color(215, 252, 252));
+      this.c2.setFont(new Font("Raleway", 1, 16));
+      this.c2.setBounds(350, 500, 200, 30);
+      this.add(this.c2);
+      this.c3 = new JCheckBox("Mobile Banking");
+      this.c3.setBackground(new Color(215, 252, 252));
+      this.c3.setFont(new Font("Raleway", 1, 16));
+      this.c3.setBounds(100, 550, 200, 30);
+      this.add(this.c3);
+      this.c4 = new JCheckBox("EMAIL Alerts");
+      this.c4.setBackground(new Color(215, 252, 252));
+      this.c4.setFont(new Font("Raleway", 1, 16));
+      this.c4.setBounds(350, 550, 200, 30);
+      this.add(this.c4);
+      this.c5 = new JCheckBox("Cheque Book");
+      this.c5.setBackground(new Color(215, 252, 252));
+      this.c5.setFont(new Font("Raleway", 1, 16));
+      this.c5.setBounds(100, 600, 200, 30);
+      this.add(this.c5);
+      this.c6 = new JCheckBox("E-Statement");
+      this.c6.setBackground(new Color(215, 252, 252));
+      this.c6.setFont(new Font("Raleway", 1, 16));
+      this.c6.setBounds(350, 600, 200, 30);
+      this.add(this.c6);
+      JCheckBox var18 = new JCheckBox("I here by decleares that the above entered details correct to the best of my knlowledge.", true);
+      var18.setBackground(new Color(215, 252, 252));
+      var18.setFont(new Font("Raleway", 1, 12));
+      var18.setBounds(100, 680, 600, 20);
+      this.add(var18);
+      JLabel var19 = new JLabel("Form No : ");
+      var19.setFont(new Font("Raleway", 1, 14));
+      var19.setBounds(700, 10, 100, 30);
+      this.add(var19);
+      JLabel var20 = new JLabel(var1);
+      var20.setFont(new Font("Raleway", 1, 14));
+      var20.setBounds(760, 10, 60, 30);
+      this.add(var20);
+      this.s = new JButton("Submit");
+      this.s.setFont(new Font("Raleway", 1, 14));
+      this.s.setBackground(Color.BLACK);
+      this.s.setForeground(Color.WHITE);
+      this.s.setBounds(250, 720, 100, 30);
+      this.s.addActionListener(this);
+      this.add(this.s);
+      this.c = new JButton("Cancel");
+      this.c.setFont(new Font("Raleway", 1, 14));
+      this.c.setBackground(Color.BLACK);
+      this.c.setForeground(Color.WHITE);
+      this.c.setBounds(420, 720, 100, 30);
+      this.c.addActionListener(this);
+      this.add(this.c);
+      this.getContentPane().setBackground(new Color(215, 252, 252));
+      this.setSize(850, 800);
+      this.setLayout((LayoutManager)null);
+      this.setLocation(400, 20);
+      this.setVisible(true);
+   }
+
+   public void actionPerformed(ActionEvent var1) {
+      String var2 = null;
+      if (this.r1.isSelected()) {
+         var2 = "Saving Account";
+      } else if (this.r2.isSelected()) {
+         var2 = "Fixed Deposit Account";
+      } else if (this.r3.isSelected()) {
+         var2 = "Current Account";
+      } else if (this.r4.isSelected()) {
+         var2 = "Recurring Deposit Account";
+      }
+
+      Random var3 = new Random();
+      long var4 = var3.nextLong() % 90000000L + 1409963000000000L;
+      String var6 = "" + Math.abs(var4);
+      long var7 = var3.nextLong() % 9000L + 1000L;
+      String var9 = "" + Math.abs(var7);
+      String var10 = "";
+      if (this.c1.isSelected()) {
+         var10 = var10 + "ATM CARD ";
+      } else if (this.c2.isSelected()) {
+         var10 = var10 + "Internet Banking";
+      } else if (this.c3.isSelected()) {
+         var10 = var10 + "Mobile Banking";
+      } else if (this.c4.isSelected()) {
+         var10 = var10 + "EMAIL Alerts";
+      } else if (this.c5.isSelected()) {
+         var10 = var10 + "Cheque Book";
+      } else if (this.c6.isSelected()) {
+         var10 = var10 + "E-Statement";
+      }
+
+      try {
+         if (var1.getSource() == this.s) {
+            if (var2.equals("")) {
+               JOptionPane.showMessageDialog((Component)null, "Fill all the fields");
+            } else {
+               Connn var11 = new Connn();
+               String var12 = "insert into signupthree values('" + this.formno + "', '" + var2 + "','" + var6 + "','" + var9 + "','" + var10 + "')";
+               String var13 = "insert into login values('" + this.formno + "','" + var6 + "','" + var9 + "')";
+               var11.statement.executeUpdate(var12);
+               var11.statement.executeUpdate(var13);
+               JOptionPane.showMessageDialog((Component)null, "Card Number : " + var6 + "\n Pin : " + var9);
+               new Deposit(var9);
+               this.setVisible(false);
+            }
+         } else if (var1.getSource() == this.c) {
+            System.exit(0);
+         }
+      } catch (Exception var14) {
+         var14.printStackTrace();
+      }
+
+   }
+
+   public static void main(String[] var0) {
+      new Signup3("");
+   }
+}
