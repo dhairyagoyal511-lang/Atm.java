@@ -1,0 +1,227 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+package bank.management.system;
+
+import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+public class Signup extends JFrame implements ActionListener {
+   JRadioButton r1;
+   JRadioButton r2;
+   JRadioButton m1;
+   JRadioButton m2;
+   JRadioButton m3;
+   JButton next;
+   JTextField textName;
+   JTextField textFname;
+   JTextField textEmail;
+   JTextField textAdd;
+   JTextField textcity;
+   JTextField textState;
+   JTextField textPin;
+   JDateChooser dateChooser;
+   Random ran = new Random();
+   long first4;
+   String first;
+
+   Signup() {
+      super("APPLICATION FORM");
+      this.first4 = this.ran.nextLong() % 9000L + 1000L;
+      this.first = " " + Math.abs(this.first4);
+      ImageIcon var1 = new ImageIcon(ClassLoader.getSystemResource("icon/bank.png"));
+      Image var2 = var1.getImage().getScaledInstance(100, 100, 1);
+      ImageIcon var3 = new ImageIcon(var2);
+      JLabel var4 = new JLabel(var3);
+      var4.setBounds(25, 10, 100, 100);
+      this.add(var4);
+      JLabel var5 = new JLabel("APPLICATION FORM NO." + this.first);
+      var5.setBounds(160, 20, 600, 40);
+      var5.setFont(new Font("Raleway", 1, 38));
+      this.add(var5);
+      JLabel var6 = new JLabel("Page 1");
+      var6.setFont(new Font("Ralway", 1, 22));
+      var6.setBounds(330, 70, 600, 30);
+      this.add(var6);
+      JLabel var7 = new JLabel("Personal Details");
+      var7.setFont(new Font("Raleway", 1, 22));
+      var7.setBounds(290, 90, 600, 30);
+      this.add(var7);
+      JLabel var8 = new JLabel("Name :");
+      var8.setFont(new Font("Raleway", 1, 20));
+      var8.setBounds(100, 190, 100, 30);
+      this.add(var8);
+      this.textName = new JTextField();
+      this.textName.setFont(new Font("Raleway", 1, 14));
+      this.textName.setBounds(300, 190, 400, 30);
+      this.add(this.textName);
+      JLabel var9 = new JLabel("Father's Name :");
+      var9.setFont(new Font("Raleway", 1, 20));
+      var9.setBounds(100, 240, 200, 30);
+      this.add(var9);
+      this.textFname = new JTextField();
+      this.textFname.setFont(new Font("Raleway", 1, 14));
+      this.textFname.setBounds(300, 240, 400, 30);
+      this.add(this.textFname);
+      JLabel var10 = new JLabel("Date of Birth");
+      var10.setFont(new Font("Raleway", 1, 20));
+      var10.setBounds(100, 340, 200, 30);
+      this.add(var10);
+      this.dateChooser = new JDateChooser();
+      this.dateChooser.setForeground(new Color(105, 105, 105));
+      this.dateChooser.setBounds(300, 340, 400, 30);
+      this.add(this.dateChooser);
+      JLabel var11 = new JLabel("Gender");
+      var11.setFont(new Font("Raleway", 1, 20));
+      var11.setBounds(100, 290, 200, 30);
+      this.add(var11);
+      this.r1 = new JRadioButton("Male");
+      this.r1.setFont(new Font("Raleway", 1, 14));
+      this.r1.setBackground(new Color(222, 255, 228));
+      this.r1.setBounds(300, 290, 60, 30);
+      this.add(this.r1);
+      this.r2 = new JRadioButton("Female");
+      this.r2.setBackground(new Color(222, 255, 228));
+      this.r2.setFont(new Font("Raleway", 1, 14));
+      this.r2.setBounds(450, 290, 90, 30);
+      this.add(this.r2);
+      ButtonGroup var12 = new ButtonGroup();
+      var12.add(this.r1);
+      var12.add(this.r2);
+      JLabel var13 = new JLabel("Email address :");
+      var13.setFont(new Font("Raleway", 1, 20));
+      var13.setBounds(100, 390, 200, 30);
+      this.add(var13);
+      this.textEmail = new JTextField();
+      this.textEmail.setFont(new Font("Raleway", 1, 14));
+      this.textEmail.setBounds(300, 390, 400, 30);
+      this.add(this.textEmail);
+      JLabel var14 = new JLabel("Marital Status :");
+      var14.setFont(new Font("Raleway", 1, 20));
+      var14.setBounds(100, 440, 200, 30);
+      this.add(var14);
+      this.m1 = new JRadioButton("Married");
+      this.m1.setBounds(300, 440, 100, 30);
+      this.m1.setBackground(new Color(222, 255, 228));
+      this.m1.setFont(new Font("Raleway", 1, 14));
+      this.add(this.m1);
+      this.m2 = new JRadioButton("Unmarried");
+      this.m2.setBackground(new Color(222, 255, 228));
+      this.m2.setBounds(450, 440, 100, 30);
+      this.m2.setFont(new Font("Raleway", 1, 14));
+      this.add(this.m2);
+      this.m3 = new JRadioButton("Other");
+      this.m3.setBackground(new Color(222, 255, 228));
+      this.m3.setBounds(635, 440, 100, 30);
+      this.m3.setFont(new Font("Raleway", 1, 14));
+      this.add(this.m3);
+      ButtonGroup var15 = new ButtonGroup();
+      var15.add(this.m1);
+      var15.add(this.m2);
+      var15.add(this.m3);
+      JLabel var16 = new JLabel("Address :");
+      var16.setFont(new Font("Raleway", 1, 20));
+      var16.setBounds(100, 490, 200, 30);
+      this.add(var16);
+      this.textAdd = new JTextField();
+      this.textAdd.setFont(new Font("Raleway", 1, 14));
+      this.textAdd.setBounds(300, 490, 400, 30);
+      this.add(this.textAdd);
+      JLabel var17 = new JLabel("City :");
+      var17.setFont(new Font("Raleway", 1, 20));
+      var17.setBounds(100, 540, 200, 30);
+      this.add(var17);
+      this.textcity = new JTextField();
+      this.textcity.setFont(new Font("Raleway", 1, 14));
+      this.textcity.setBounds(300, 540, 400, 30);
+      this.add(this.textcity);
+      JLabel var18 = new JLabel("Pin Code :");
+      var18.setFont(new Font("Raleway", 1, 20));
+      var18.setBounds(100, 590, 200, 30);
+      this.add(var18);
+      this.textPin = new JTextField();
+      this.textPin.setFont(new Font("Raleway", 1, 14));
+      this.textPin.setBounds(300, 590, 400, 30);
+      this.add(this.textPin);
+      JLabel var19 = new JLabel("State :");
+      var19.setFont(new Font("Raleway", 1, 20));
+      var19.setBounds(100, 640, 200, 30);
+      this.add(var19);
+      this.textState = new JTextField();
+      this.textState.setFont(new Font("Raleway", 1, 14));
+      this.textState.setBounds(300, 640, 400, 30);
+      this.add(this.textState);
+      this.next = new JButton("Next");
+      this.next.setFont(new Font("Raleway", 1, 14));
+      this.next.setBackground(Color.BLACK);
+      this.next.setForeground(Color.WHITE);
+      this.next.setBounds(620, 710, 80, 30);
+      this.next.addActionListener(this);
+      this.add(this.next);
+      this.getContentPane().setBackground(new Color(222, 255, 228));
+      this.setLayout((LayoutManager)null);
+      this.setSize(850, 800);
+      this.setLocation(360, 40);
+      this.setVisible(true);
+   }
+
+   public void actionPerformed(ActionEvent var1) {
+      String var2 = this.first;
+      String var3 = this.textName.getText();
+      String var4 = this.textFname.getText();
+      String var5 = ((JTextField)this.dateChooser.getDateEditor().getUiComponent()).getText();
+      String var6 = null;
+      if (this.r1.isSelected()) {
+         var6 = "Male";
+      } else if (this.r2.isSelected()) {
+         var6 = "Female";
+      }
+
+      String var7 = this.textEmail.getText();
+      String var8 = null;
+      if (this.m1.isSelected()) {
+         var8 = "Married";
+      } else if (this.m2.isSelected()) {
+         var8 = "Unmarried";
+      } else if (this.m3.isSelected()) {
+         var8 = "Other";
+      }
+
+      String var9 = this.textAdd.getText();
+      String var10 = this.textcity.getText();
+      String var11 = this.textPin.getText();
+      String var12 = this.textState.getText();
+
+      try {
+         if (this.textName.getText().equals("")) {
+            JOptionPane.showMessageDialog((Component)null, "Fill all the fields");
+         } else {
+            Connn var13 = new Connn();
+            String var14 = "insert into signup values('" + var2 + "', '" + var3 + "','" + var4 + "','" + var5 + "','" + var6 + "','" + var7 + "','" + var8 + "', '" + var9 + "', '" + var10 + "','" + var11 + "','" + var12 + "' )";
+            var13.statement.executeUpdate(var14);
+            new Signup2(var2);
+            this.setVisible(false);
+         }
+      } catch (Exception var15) {
+         var15.printStackTrace();
+      }
+
+   }
+
+   public static void main(String[] var0) {
+      new Signup();
+   }
+}
