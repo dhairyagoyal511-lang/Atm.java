@@ -1,0 +1,209 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+package bank.management.system;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+public class Signup2 extends JFrame implements ActionListener {
+   JComboBox comboBox;
+   JComboBox comboBox2;
+   JComboBox comboBox3;
+   JComboBox comboBox4;
+   JComboBox comboBox5;
+   JTextField textPan;
+   JTextField textAadhar;
+   JRadioButton r1;
+   JRadioButton r2;
+   JRadioButton e1;
+   JRadioButton e2;
+   JButton next;
+   String formno;
+
+   Signup2(String var1) {
+      super("APPLICATION FORM");
+      ImageIcon var2 = new ImageIcon(ClassLoader.getSystemResource("icon/bank.png"));
+      Image var3 = var2.getImage().getScaledInstance(100, 100, 1);
+      ImageIcon var4 = new ImageIcon(var3);
+      JLabel var5 = new JLabel(var4);
+      var5.setBounds(150, 5, 100, 100);
+      this.add(var5);
+      this.formno = var1;
+      JLabel var6 = new JLabel("Page 2 :-");
+      var6.setFont(new Font("Raleway", 1, 22));
+      var6.setBounds(300, 30, 600, 40);
+      this.add(var6);
+      JLabel var7 = new JLabel("Additonal Details");
+      var7.setFont(new Font("Raleway", 1, 22));
+      var7.setBounds(300, 60, 600, 40);
+      this.add(var7);
+      JLabel var8 = new JLabel("Religion :");
+      var8.setFont(new Font("Raleway", 1, 18));
+      var8.setBounds(100, 120, 100, 30);
+      this.add(var8);
+      String[] var9 = new String[]{"Hindu", "Muslim", "Sikh", "Christian", "Other"};
+      this.comboBox = new JComboBox(var9);
+      this.comboBox.setBackground(new Color(252, 208, 76));
+      this.comboBox.setFont(new Font("Raleway", 1, 14));
+      this.comboBox.setBounds(350, 120, 320, 30);
+      this.add(this.comboBox);
+      JLabel var10 = new JLabel("Category : ");
+      var10.setFont(new Font("Raleway", 1, 18));
+      var10.setBounds(100, 170, 100, 30);
+      this.add(var10);
+      String[] var11 = new String[]{"General", "OBC", "SC", "ST", "Other"};
+      this.comboBox2 = new JComboBox(var11);
+      this.comboBox2.setBackground(new Color(252, 208, 76));
+      this.comboBox2.setFont(new Font("Raleway", 1, 14));
+      this.comboBox2.setBounds(350, 170, 320, 30);
+      this.add(this.comboBox2);
+      JLabel var12 = new JLabel("Income : ");
+      var12.setFont(new Font("Raleway", 1, 18));
+      var12.setBounds(100, 220, 100, 30);
+      this.add(var12);
+      String[] var13 = new String[]{"Null", "<1,50,000", "<2,50,000", "5,00,000", "Uptp 10,00,000", "Above 10,00,000"};
+      this.comboBox3 = new JComboBox(var13);
+      this.comboBox3.setBackground(new Color(252, 208, 76));
+      this.comboBox3.setFont(new Font("Raleway", 1, 14));
+      this.comboBox3.setBounds(350, 220, 320, 30);
+      this.add(this.comboBox3);
+      JLabel var14 = new JLabel("Educational : ");
+      var14.setFont(new Font("Raleway", 1, 18));
+      var14.setBounds(100, 270, 150, 30);
+      this.add(var14);
+      String[] var15 = new String[]{"Non-Graduate", "Graduate", "Post-Graduate", "Doctrate", "Others"};
+      this.comboBox4 = new JComboBox(var15);
+      this.comboBox4.setBackground(new Color(252, 208, 76));
+      this.comboBox4.setFont(new Font("Raleway", 1, 14));
+      this.comboBox4.setBounds(350, 270, 320, 30);
+      this.add(this.comboBox4);
+      JLabel var16 = new JLabel("Occupation : ");
+      var16.setFont(new Font("Raleway", 1, 18));
+      var16.setBounds(100, 340, 150, 30);
+      this.add(var16);
+      String[] var17 = new String[]{"Salaried", "Self-Employed", "Business", "Student", "Retired", "Other"};
+      this.comboBox5 = new JComboBox(var17);
+      this.comboBox5.setBackground(new Color(252, 208, 76));
+      this.comboBox5.setFont(new Font("Raleway", 1, 14));
+      this.comboBox5.setBounds(350, 340, 320, 30);
+      this.add(this.comboBox5);
+      JLabel var18 = new JLabel("PAN Number : ");
+      var18.setFont(new Font("Raleway", 1, 18));
+      var18.setBounds(100, 390, 150, 30);
+      this.add(var18);
+      this.textPan = new JTextField();
+      this.textPan.setFont(new Font("Raleway", 1, 18));
+      this.textPan.setBounds(350, 390, 320, 30);
+      this.add(this.textPan);
+      JLabel var19 = new JLabel("Aadhar Number : ");
+      var19.setFont(new Font("Raleway", 1, 18));
+      var19.setBounds(100, 440, 180, 30);
+      this.add(var19);
+      this.textAadhar = new JTextField();
+      this.textAadhar.setFont(new Font("Raleway", 1, 18));
+      this.textAadhar.setBounds(350, 440, 320, 30);
+      this.add(this.textAadhar);
+      JLabel var20 = new JLabel("Senior Citizen : ");
+      var20.setFont(new Font("Raleway", 1, 18));
+      var20.setBounds(100, 490, 180, 30);
+      this.add(var20);
+      this.r1 = new JRadioButton("Yes");
+      this.r1.setFont(new Font("Raleway", 1, 14));
+      this.r1.setBackground(new Color(252, 208, 76));
+      this.r1.setBounds(350, 490, 100, 30);
+      this.add(this.r1);
+      this.r2 = new JRadioButton("No");
+      this.r2.setFont(new Font("Raleway", 1, 14));
+      this.r2.setBackground(new Color(252, 208, 76));
+      this.r2.setBounds(460, 490, 100, 30);
+      this.add(this.r2);
+      JLabel var21 = new JLabel("Existing Account : ");
+      var21.setFont(new Font("Raleway", 1, 18));
+      var21.setBounds(100, 540, 180, 30);
+      this.add(var21);
+      this.e1 = new JRadioButton("Yes");
+      this.e1.setFont(new Font("Raleway", 1, 14));
+      this.e1.setBackground(new Color(252, 208, 76));
+      this.e1.setBounds(350, 540, 100, 30);
+      this.add(this.e1);
+      this.e2 = new JRadioButton("No");
+      this.e2.setFont(new Font("Raleway", 1, 14));
+      this.e2.setBackground(new Color(252, 208, 76));
+      this.e2.setBounds(460, 540, 100, 30);
+      this.add(this.e2);
+      JLabel var22 = new JLabel("Form No : ");
+      var22.setFont(new Font("Raleway", 1, 14));
+      var22.setBounds(700, 10, 100, 30);
+      this.add(var22);
+      JLabel var23 = new JLabel(var1);
+      var23.setFont(new Font("Raleway", 1, 14));
+      var23.setBounds(760, 10, 60, 30);
+      this.add(var23);
+      this.next = new JButton("Next");
+      this.next.setFont(new Font("Raleway", 1, 14));
+      this.next.setBackground(Color.WHITE);
+      this.next.setForeground(Color.BLACK);
+      this.next.setBounds(570, 640, 100, 30);
+      this.next.addActionListener(this);
+      this.add(this.next);
+      this.setLayout((LayoutManager)null);
+      this.setSize(850, 750);
+      this.setLocation(450, 80);
+      this.getContentPane().setBackground(new Color(252, 208, 76));
+      this.setVisible(true);
+   }
+
+   public void actionPerformed(ActionEvent var1) {
+      String var2 = (String)this.comboBox.getSelectedItem();
+      String var3 = (String)this.comboBox2.getSelectedItem();
+      String var4 = (String)this.comboBox3.getSelectedItem();
+      String var5 = (String)this.comboBox4.getSelectedItem();
+      String var6 = (String)this.comboBox5.getSelectedItem();
+      String var7 = this.textPan.getText();
+      String var8 = this.textAadhar.getText();
+      String var9 = " ";
+      if (this.r1.isSelected()) {
+         var9 = "Yes";
+      } else if (this.r2.isSelected()) {
+         var9 = "No";
+      }
+
+      String var10 = " ";
+      if (this.r1.isSelected()) {
+         var10 = "Yes";
+      } else if (this.r2.isSelected()) {
+         var10 = "No";
+      }
+
+      try {
+         if (!this.textPan.getText().equals("") && !this.textAadhar.getText().equals("")) {
+            Connn var11 = new Connn();
+            String var12 = "insert into Signuptwo values('" + this.formno + "', '" + var2 + "', '" + var3 + "','" + var4 + "','" + var5 + "','" + var6 + "','" + var7 + "','" + var8 + "','" + var9 + "','" + var10 + "')";
+            var11.statement.executeUpdate(var12);
+            new Signup3(this.formno);
+            this.setVisible(false);
+         } else {
+            JOptionPane.showMessageDialog((Component)null, "Fill all the fields");
+         }
+      } catch (Exception var13) {
+         var13.printStackTrace();
+      }
+
+   }
+
+   public static void main(String[] var0) {
+      new Signup2("");
+   }
+}
