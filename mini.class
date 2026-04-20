@@ -1,0 +1,86 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+package bank.management.system;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class mini extends JFrame implements ActionListener {
+   String pin;
+   JButton button;
+
+   mini(String var1) {
+      this.pin = var1;
+      this.getContentPane().setBackground(new Color(255, 204, 204));
+      this.setSize(400, 600);
+      this.setLocation(20, 20);
+      this.setLayout((LayoutManager)null);
+      JLabel var2 = new JLabel();
+      var2.setBounds(20, 140, 400, 200);
+      this.add(var2);
+      JLabel var3 = new JLabel("TechCoder A.V");
+      var3.setFont(new Font("System", 1, 15));
+      var3.setBounds(150, 20, 200, 20);
+      this.add(var3);
+      JLabel var4 = new JLabel();
+      var4.setBounds(20, 80, 300, 20);
+      this.add(var4);
+      JLabel var5 = new JLabel();
+      var5.setBounds(20, 400, 300, 20);
+      this.add(var5);
+
+      try {
+         Connn var6 = new Connn();
+         ResultSet var7 = var6.statement.executeQuery("select * from login where pin = '" + var1 + "'");
+
+         while(var7.next()) {
+            String var10001 = var7.getString("card_number").substring(0, 4);
+            var4.setText("Card Number:  " + var10001 + "XXXXXXXX" + var7.getString("card_number").substring(12));
+         }
+      } catch (Exception var10) {
+         var10.printStackTrace();
+      }
+
+      try {
+         int var11 = 0;
+         Connn var12 = new Connn();
+         ResultSet var8 = var12.statement.executeQuery("select * from bank where pin = '" + var1 + "'");
+
+         while(var8.next()) {
+            String var13 = var2.getText();
+            var2.setText(var13 + "<html>" + var8.getString("date") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + var8.getString("type") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + var8.getString("amount") + "<br><br><html>");
+            if (var8.getString("type").equals("Deposit")) {
+               var11 += Integer.parseInt(var8.getString("amount"));
+            } else {
+               var11 -= Integer.parseInt(var8.getString("amount"));
+            }
+         }
+
+         var5.setText("Your Total Balance is Rs " + var11);
+      } catch (Exception var9) {
+         var9.printStackTrace();
+      }
+
+      this.button = new JButton("Exit");
+      this.button.setBounds(20, 500, 100, 25);
+      this.button.addActionListener(this);
+      this.button.setBackground(Color.BLACK);
+      this.button.setForeground(Color.WHITE);
+      this.add(this.button);
+      this.setVisible(true);
+   }
+
+   public void actionPerformed(ActionEvent var1) {
+      this.setVisible(false);
+   }
+
+   public static void main(String[] var0) {
+      new mini("");
+   }
+}
