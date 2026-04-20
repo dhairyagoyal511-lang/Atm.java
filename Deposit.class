@@ -1,0 +1,90 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+package bank.management.system;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.LayoutManager;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+public class Deposit extends JFrame implements ActionListener {
+   String pin;
+   TextField textField;
+   JButton b1;
+   JButton b2;
+
+   Deposit(String var1) {
+      this.pin = var1;
+      ImageIcon var2 = new ImageIcon(ClassLoader.getSystemResource("icon/atm2.png"));
+      Image var3 = var2.getImage().getScaledInstance(1550, 830, 1);
+      ImageIcon var4 = new ImageIcon(var3);
+      JLabel var5 = new JLabel(var4);
+      var5.setBounds(0, 0, 1550, 830);
+      this.add(var5);
+      JLabel var6 = new JLabel("ENETR AMOUNT YOU WANT TO DEPOSIT");
+      var6.setForeground(Color.WHITE);
+      var6.setFont(new Font("System", 1, 16));
+      var6.setBounds(460, 180, 400, 35);
+      var5.add(var6);
+      this.textField = new TextField();
+      this.textField.setBackground(new Color(65, 125, 128));
+      this.textField.setForeground(Color.WHITE);
+      this.textField.setBounds(460, 230, 320, 25);
+      this.textField.setFont(new Font("Raleway", 1, 22));
+      var5.add(this.textField);
+      this.b1 = new JButton("DEPOSIT");
+      this.b1.setBounds(700, 362, 150, 35);
+      this.b1.setBackground(new Color(65, 125, 128));
+      this.b1.setForeground(Color.WHITE);
+      this.b1.addActionListener(this);
+      var5.add(this.b1);
+      this.b2 = new JButton("BACK");
+      this.b2.setBounds(700, 406, 150, 35);
+      this.b2.setBackground(new Color(65, 125, 128));
+      this.b2.setForeground(Color.WHITE);
+      this.b2.addActionListener(this);
+      var5.add(this.b2);
+      this.setLayout((LayoutManager)null);
+      this.setSize(1550, 1080);
+      this.setLocation(0, 0);
+      this.setVisible(true);
+   }
+
+   public void actionPerformed(ActionEvent var1) {
+      try {
+         String var2 = this.textField.getText();
+         Date var3 = new Date();
+         if (var1.getSource() == this.b1) {
+            if (this.textField.getText().equals("")) {
+               JOptionPane.showMessageDialog((Component)null, "Please enter the Amount you want to Deposit");
+            } else {
+               Connn var4 = new Connn();
+               String var10001 = this.pin;
+               var4.statement.executeUpdate("insert into bank values('" + var10001 + "', '" + String.valueOf(var3) + "','Deposit', '" + var2 + "')");
+               JOptionPane.showMessageDialog((Component)null, "Rs. " + var2 + " Deposited Successfully");
+               this.setVisible(false);
+               new main_Class(this.pin);
+            }
+         } else if (var1.getSource() == this.b2) {
+            this.setVisible(false);
+            new main_Class(this.pin);
+         }
+      } catch (Exception var5) {
+         var5.printStackTrace();
+      }
+
+   }
+
+   public static void main(String[] var0) {
+      new Deposit("");
+   }
+}
