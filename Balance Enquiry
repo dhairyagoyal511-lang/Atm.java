@@ -1,0 +1,77 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+package bank.management.system;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class BalanceEnquriy extends JFrame implements ActionListener {
+   String pin;
+   JLabel label2;
+   JButton b1;
+
+   BalanceEnquriy(String var1) {
+      this.pin = var1;
+      ImageIcon var2 = new ImageIcon(ClassLoader.getSystemResource("icon/atm2.png"));
+      Image var3 = var2.getImage().getScaledInstance(1550, 830, 1);
+      ImageIcon var4 = new ImageIcon(var3);
+      JLabel var5 = new JLabel(var4);
+      var5.setBounds(0, 0, 1550, 830);
+      this.add(var5);
+      JLabel var6 = new JLabel("Your Current Balance is Rs ");
+      var6.setForeground(Color.WHITE);
+      var6.setFont(new Font("System", 1, 16));
+      var6.setBounds(430, 180, 700, 35);
+      var5.add(var6);
+      this.label2 = new JLabel();
+      this.label2.setForeground(Color.WHITE);
+      this.label2.setFont(new Font("System", 1, 16));
+      this.label2.setBounds(430, 220, 400, 35);
+      var5.add(this.label2);
+      this.b1 = new JButton("Back");
+      this.b1.setBounds(700, 406, 150, 35);
+      this.b1.setBackground(new Color(65, 125, 128));
+      this.b1.setForeground(Color.WHITE);
+      this.b1.addActionListener(this);
+      var5.add(this.b1);
+      int var7 = 0;
+
+      try {
+         Connn var8 = new Connn();
+         ResultSet var9 = var8.statement.executeQuery("Select * from bank where pin = '" + var1 + "'");
+
+         while(var9.next()) {
+            if (var9.getString("type").equals("Deposit")) {
+               var7 += Integer.parseInt(var9.getString("amount"));
+            } else {
+               var7 -= Integer.parseInt(var9.getString("amount"));
+            }
+         }
+      } catch (Exception var10) {
+         var10.printStackTrace();
+      }
+
+      this.label2.setText("" + var7);
+      this.setLayout((LayoutManager)null);
+      this.setSize(1550, 1080);
+      this.setLocation(0, 0);
+      this.setVisible(true);
+   }
+
+   public void actionPerformed(ActionEvent var1) {
+      this.setVisible(false);
+      new main_Class(this.pin);
+   }
+
+   public static void main(String[] var0) {
+      new BalanceEnquriy("");
+   }
+}
