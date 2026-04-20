@@ -1,0 +1,132 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+package bank.management.system;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+public class FastCash extends JFrame implements ActionListener {
+   JButton b1;
+   JButton b2;
+   JButton b3;
+   JButton b4;
+   JButton b5;
+   JButton b6;
+   JButton b7;
+   String pin;
+
+   FastCash(String var1) {
+      this.pin = var1;
+      ImageIcon var2 = new ImageIcon(ClassLoader.getSystemResource("icon/atm2.png"));
+      Image var3 = var2.getImage().getScaledInstance(1550, 830, 1);
+      ImageIcon var4 = new ImageIcon(var3);
+      JLabel var5 = new JLabel(var4);
+      var5.setBounds(0, 0, 1550, 830);
+      this.add(var5);
+      JLabel var6 = new JLabel("SELECT WITHDRAWL AMOUNT");
+      var6.setBounds(445, 180, 700, 35);
+      var6.setForeground(Color.WHITE);
+      var6.setFont(new Font("System", 1, 23));
+      var5.add(var6);
+      this.b1 = new JButton("Rs. 100");
+      this.b1.setForeground(Color.WHITE);
+      this.b1.setBackground(new Color(65, 125, 128));
+      this.b1.setBounds(410, 274, 150, 35);
+      this.b1.addActionListener(this);
+      var5.add(this.b1);
+      this.b2 = new JButton("Rs. 500");
+      this.b2.setForeground(Color.WHITE);
+      this.b2.setBackground(new Color(65, 125, 128));
+      this.b2.setBounds(700, 274, 150, 35);
+      this.b2.addActionListener(this);
+      var5.add(this.b2);
+      this.b3 = new JButton("Rs. 1000");
+      this.b3.setForeground(Color.WHITE);
+      this.b3.setBackground(new Color(65, 125, 128));
+      this.b3.setBounds(410, 318, 150, 35);
+      this.b3.addActionListener(this);
+      var5.add(this.b3);
+      this.b4 = new JButton("Rs. 2000");
+      this.b4.setForeground(Color.WHITE);
+      this.b4.setBackground(new Color(65, 125, 128));
+      this.b4.setBounds(700, 318, 150, 35);
+      this.b4.addActionListener(this);
+      var5.add(this.b4);
+      this.b5 = new JButton("Rs. 5000");
+      this.b5.setForeground(Color.WHITE);
+      this.b5.setBackground(new Color(65, 125, 128));
+      this.b5.setBounds(410, 362, 150, 35);
+      this.b5.addActionListener(this);
+      var5.add(this.b5);
+      this.b6 = new JButton("Rs. 10000");
+      this.b6.setForeground(Color.WHITE);
+      this.b6.setBackground(new Color(65, 125, 128));
+      this.b6.setBounds(700, 362, 150, 35);
+      this.b6.addActionListener(this);
+      var5.add(this.b6);
+      this.b7 = new JButton("BACK");
+      this.b7.setForeground(Color.WHITE);
+      this.b7.setBackground(new Color(65, 125, 128));
+      this.b7.setBounds(700, 406, 150, 35);
+      this.b7.addActionListener(this);
+      var5.add(this.b7);
+      this.setLayout((LayoutManager)null);
+      this.setSize(1550, 1080);
+      this.setLocation(0, 0);
+      this.setVisible(true);
+   }
+
+   public void actionPerformed(ActionEvent var1) {
+      if (var1.getSource() == this.b7) {
+         this.setVisible(false);
+         new main_Class(this.pin);
+      } else {
+         String var2 = ((JButton)var1.getSource()).getText().substring(4);
+         Connn var3 = new Connn();
+         Date var4 = new Date();
+
+         try {
+            ResultSet var5 = var3.statement.executeQuery("select * from bank where pin = '" + this.pin + "'");
+            int var6 = 0;
+
+            while(var5.next()) {
+               if (var5.getString("type").equals("Deposit")) {
+                  var6 += Integer.parseInt(var5.getString("amount"));
+               } else {
+                  var6 -= Integer.parseInt(var5.getString("amount"));
+               }
+            }
+
+            if (var1.getSource() != this.b7 && var6 < Integer.parseInt(var2)) {
+               JOptionPane.showMessageDialog((Component)null, "Insuffient Balance");
+               return;
+            }
+
+            String var10001 = this.pin;
+            var3.statement.executeUpdate("insert into bank values('" + var10001 + "','" + String.valueOf(var4) + "', 'withdrawl', '" + var2 + "')");
+            JOptionPane.showMessageDialog((Component)null, "Rs. " + var2 + " Debited Successfully");
+         } catch (Exception var7) {
+            var7.printStackTrace();
+         }
+
+         this.setVisible(false);
+         new main_Class(this.pin);
+      }
+
+   }
+
+   public static void main(String[] var0) {
+      new FastCash("");
+   }
+}
